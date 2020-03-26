@@ -181,11 +181,11 @@ class GCT(object):
         self.version = self._gctx_file.get_node_attr("/","version")
 
         #create shortcut reference to matrix and metadata tables
-        self.matrix_node = self._gctx_file.getNode("/0/DATA/0", "matrix")
-        self.column_id_node = self._gctx_file.getNode("/0/META/COL", "id")
-        self.row_id_node = self._gctx_file.getNode("/0/META/ROW", "id")
-        self.column_data = self._gctx_file.listNodes("/0/META/COL")
-        self.row_data = self._gctx_file.listNodes("/0/META/ROW")
+        self.matrix_node = self._gctx_file.get_node("/0/DATA/0", "matrix")
+        self.column_id_node = self._gctx_file.get_node("/0/META/COL", "id")
+        self.row_id_node = self._gctx_file.get_node("/0/META/ROW", "id")
+        self.column_data = self._gctx_file.list_nodes("/0/META/COL")
+        self.row_data = self._gctx_file.list_nodes("/0/META/ROW")
 
     def _close_gctx(self):
         '''

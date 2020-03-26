@@ -177,8 +177,8 @@ class GCT(object):
         '''
         #set self.src and self.version
         self.src = src
-        self._gctx_file = tables.openFile(src,'r')
-        self.version = self._gctx_file.getNodeAttr("/","version")
+        self._gctx_file = tables.open_file(src,'r')
+        self.version = self._gctx_file.get_node_attr("/","version")
 
         #create shortcut reference to matrix and metadata tables
         self.matrix_node = self._gctx_file.getNode("/0/DATA/0", "matrix")
@@ -671,7 +671,7 @@ class GCT(object):
                 if not re.match('.*.gctx$', ofile):
                     ofile = '{0}_n{1}x{2}.gctx'.format(ofile, self.matrix.shape[1],
                                                        self.matrix.shape[0])
-                h5f = tables.openFile(ofile, mode = 'w')
+                h5f = tables.open_file(ofile, mode = 'w')
                 h5f.setNodeAttr('/', 'version', 'GCTX1.0')
                 # store the matrix
                 h5f.createGroup('/', '0')
